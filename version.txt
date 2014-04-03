@@ -2,4 +2,4 @@
 * Internationalize
 
 0.1.0
-* Updated to SDK 1.16 and removed updated deprecated APIs
+* Updated to SDK 1.16 and updated deprecated APIs
