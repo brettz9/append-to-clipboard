@@ -1,0 +1,32 @@
+{
+    "name": "append-to-clipboard",
+    "title": "Append To Clipboard",
+    "id": "jid0-o20OcJEteABtgjFUKPfXyQhRIQg",
+    "description": "Append to the clipboard",
+    "author": "Brett Zamir",
+    "license": "MIT",
+    "version": "0.1.0",
+    "preferences": [
+        {
+            "name": "noSeparator",
+            "type": "bool",
+            "description": "Enable context menu for appending to clipboard without a separator between pasted items?",
+            "value": true,
+            "title": "No separator"
+        },
+        {
+            "name": "lineBreakSeparator",
+            "type": "bool",
+            "description": "Enable context menu for appending to clipboard with a line break separator between pasted items (\\n for text and <br />\\n for HTML)?",
+            "value": true,
+            "title": "Line break separator"
+        },
+        {
+            "name": "doubleLineBreakSeparator",
+            "type": "bool",
+            "description": "Enable context menu for appending to clipboard with a double line break separator between pasted items (\\n\\n for text and <br /><br />\\n\\n for HTML)?",
+            "value": true,
+            "title": "Double line break separator"
+        }
+    ]
+}
