@@ -1,2 +1,5 @@
 0.1.1
 * Internationalize
+
+0.1.0
+* Updated to SDK 1.16 and removed updated deprecated APIs
