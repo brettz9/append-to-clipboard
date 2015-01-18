@@ -3,7 +3,7 @@
 A restartless
 [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/append-to-clipboard/)
 to allow appending to the clipboard, optionally with a single or double
-line break in between.
+line break in between as well as a "clear clipboard" option.
 
 Note that if the clipboard begins with formatted HTML and you paste the
 contents into a text-only environment, the line breaks will be converted
