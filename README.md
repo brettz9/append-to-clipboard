@@ -13,6 +13,7 @@ when first copying content.
 
 # Todos
 1. Allow definition and use of multiple user-defined separators (in context submenu) (as per issue #1)
+1. Allow appending of link location or text (as per issue #1)
 
 # Possible todos
 1. As per [this comment](https://ask.mozilla.org/question/443/preserving-line-breaks-when-pasting-formatted-clipboard-to-unformatted/)
