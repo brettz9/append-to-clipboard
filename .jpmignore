@@ -4,6 +4,7 @@
 
 *.xpi
 *.lnk
+*.bat
 
 doc
 test
