@@ -1,6 +1,10 @@
 The MIT License (MIT)
 
-Copyright (c) 2014 Brett Zamir
+Copyright (c) 2014-2018 Brett Zamir
+
+The clipboard functions in `content-scripts/contextMenu.js` are
+also MIT, copyright (c) 2017 Niklas Gollenstede:
+<https://github.com/NiklasGollenstede/es6lib/blob/master/dom.js>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

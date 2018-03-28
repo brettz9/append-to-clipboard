@@ -1,41 +1,43 @@
 {
     "name": "append-to-clipboard",
-    "title": "Append To Clipboard",
-    "id": "jid0-o20OcJEteABtgjFUKPfXyQhRIQg@jetpack",
-    "description": "Append to the clipboard",
+    "description": "Append copied text to the clipboard, optionally with separators",
     "author": "Brett Zamir",
+    "contributors": [],
     "license": "MIT",
-    "version": "1.1.0",
-    "main": "lib/main",
-    "permissions": {"private-browsing": true},
-    "preferences": [
-        {
-            "name": "noSeparator",
-            "type": "bool",
-            "description": "Enable context menu for appending to clipboard without a separator between pasted items?",
-            "value": true,
-            "title": "No separator"
-        },
-        {
-            "name": "lineBreakSeparator",
-            "type": "bool",
-            "description": "Enable context menu for appending to clipboard with a line break separator between pasted items (\\n for text and <br />\\n for HTML)?",
-            "value": true,
-            "title": "Line break separator"
-        },
-        {
-            "name": "doubleLineBreakSeparator",
-            "type": "bool",
-            "description": "Enable context menu for appending to clipboard with a double line break separator between pasted items (\\n\\n for text and <br /><br />\\n\\n for HTML)?",
-            "value": true,
-            "title": "Double line break separator"
-        },
-        {
-            "name": "clearClipboard",
-            "type": "bool",
-            "description": "Enable context menu for emptying the clipboard?",
-            "value": true,
-            "title": "Clear Clipboard"
-        }
-    ]
+    "version": "2.0.0",
+    "keywords": [
+        "webextension",
+        "clipboard"
+    ],
+    "bugs": "https://github.com/brettz9/append-to-clipboard/issues",
+    "homepage": "https://github.com/brettz9/append-to-clipboard",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/brettz9/append-to-clipboard.git"
+    },
+    "engines": {},
+    "dependencies": {
+        "webextension-polyfill": "^0.2.1"
+    },
+    "devDependencies": {
+        "eslint": "4.19.1",
+        "eslint-config-standard": "11.0.0",
+        "eslint-plugin-import": "2.9.0",
+        "eslint-plugin-node": "6.0.1",
+        "eslint-plugin-promise": "3.7.0",
+        "eslint-plugin-standard": "3.0.1",
+        "jamilih": "0.32.0"
+    },
+    "scripts": {
+        "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
+        "webext": "npm run eslint && web-ext run --browser-console -f firefox",
+        "webext-default": "npm run eslint && web-ext run --browser-console",
+        "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
+        "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
+        "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
+        "webext-build": "npm run eslint && web-ext build",
+        "eslint": "eslint .",
+        "copy-jamilih": "cp node_modules/jamilih/dist/jml-noinnerh.js options/jml.js",
+        "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js"
+    }
 }

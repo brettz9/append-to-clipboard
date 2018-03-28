@@ -1,3 +1,10 @@
+# 2.0.0
+
+- webextensions (and Chrome) support
+- License: Rename license file to reflect type (MIT)
+- Linting: Markdown, ESLint
+- Docs: Update Copy Link Text references and to-dos
+
 # 1.1.0
 - Add support for private window browsing
 
