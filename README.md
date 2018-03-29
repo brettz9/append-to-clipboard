@@ -5,13 +5,11 @@ A webextensions
 add-on to allow appending to the clipboard, optionally with a single or double
 line break in between as well as a "clear clipboard" option.
 
-Note that if the clipboard begins with formatted HTML and you paste the
-contents into a text-only environment, the line breaks will be converted
-into spaces. To avoid this, consider using
+You may find
 [Copy Plain Text](https://addons.mozilla.org/en-US/firefox/addon/copy-plaintext/)
 or
 [Copy Plain Text WE](https://addons.mozilla.org/en-US/firefox/addon/copy-plain-text-we/)
-when first copying content.
+helpful if you wish to ensure your first copy is as plain text.
 
 ![Screenshot of usage](https://raw.githubusercontent.com/brettz9/append-to-clipboard/master/screenshots/Screen%20Shot%202018-03-29%20at%205.26.04%20PM.png)
 
