@@ -13,7 +13,7 @@ or
 [Copy Plain Text WE](https://addons.mozilla.org/en-US/firefox/addon/copy-plain-text-we/)
 when first copying content.
 
-![Screenshot of usage](./screenshots/Screen Shot 2018-03-29 at 5.26.04 PM)
+![Screenshot of usage](https://raw.githubusercontent.com/brettz9/append-to-clipboard/master/screenshots/Screen%20Shot%202018-03-29%20at%205.26.04%20PM.png)
 
 # Todos
 
