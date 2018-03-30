@@ -1,5 +1,4 @@
 /* eslint-env browser */
-// We could get the second argument from `document.getSelection()` instead
 
 function $ (sel) {
     return document.querySelector(sel);
