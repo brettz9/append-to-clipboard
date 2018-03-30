@@ -143,7 +143,8 @@ async function append (typesToSeparators) {
     return writeToClipboard(currentClipboard);
 }
 
-// Get around eslint-config-standard limitation on "exported" directive:
+// Get around eslint-config-standard limitation on "exported" directive
+//   by exporting as follows:
 //   https://github.com/standard/standard/issues/614
 window.appendToClipboard = async function appendToClipboard (menuItemId) {
     switch (menuItemId) {
