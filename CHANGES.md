@@ -1,3 +1,7 @@
+# ?
+
+- Yarn: Add `yarn.lock`
+
 # 2.0.0
 
 - webextensions (and Chrome) support
