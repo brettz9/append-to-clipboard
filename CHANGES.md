@@ -1,3 +1,8 @@
+# 2.2.2
+
+- Revert to non-ES6 module import due to
+    [Firefox add-on linter issue](https://github.com/mozilla/addons-linter/issues/1775)
+
 # 2.2.1
 
 - Fix: Include `manifest.json` version update
