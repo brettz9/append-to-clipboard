@@ -6,6 +6,7 @@ module.exports = {
         // Files beginning with dot, zip/xpi, node_modules, and web-ext-artifacts auto-ignored
         'package-lock.json',
         'package.json',
-        'screenshots'
+        'screenshots',
+        'test.html'
     ]
 };
