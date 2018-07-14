@@ -32,6 +32,9 @@ const clipboardMethodMap = {
         'text/html': '<br /><br />\n'
     }
 };
+clipboardMethodMap.noSeparatorLinkText = clipboardMethodMap.noSeparator;
+clipboardMethodMap.lineBreakSeparatorLinkText = clipboardMethodMap.lineBreakSeparator;
+clipboardMethodMap.doubleLineBreakSeparatorLinkText = clipboardMethodMap.doubleLineBreakSeparator;
 
 // Adapted from MIT-licensed: https://github.com/NiklasGollenstede/es6lib/blob/master/dom.js#L162
 function writeToClipboard (data, timeout) {
@@ -125,27 +128,39 @@ function readFromClipboard (types, timeout) {
     });
 }
 
-async function append (typesToSeparators) {
+async function append (typesToSeparators, linkText, linkUrl, menuItemId) {
     // Due to https://bugzilla.mozilla.org/show_bug.cgi?id=85686 , we cannot
     //  use `getSelection` alone
     let typeToSelection;
-    const activeElem = document.activeElement;
-    if (['textarea', 'input'].includes(activeElem.nodeName.toLowerCase())) {
-        const sel = activeElem.value.slice(activeElem.selectionStart, activeElem.selectionEnd);
+    if (linkText && menuItemId.endsWith('LinkText')) {
         typeToSelection = {
-            'text/plain': sel,
-            'text/html': sel
+            'text/plain': linkText,
+            'text/html': linkText
+        };
+    } else if (linkUrl) {
+        typeToSelection = {
+            'text/plain': linkUrl,
+            'text/html': `<a href="${linkUrl}">${linkText || linkUrl}</a>`
         };
     } else {
-        const sel = window.getSelection();
-        const container = document.createElement('div');
-        for (let i = 0; i < sel.rangeCount; i++) {
-            container.append(sel.getRangeAt(i).cloneContents());
+        const activeElem = document.activeElement;
+        if (['textarea', 'input'].includes(activeElem.nodeName.toLowerCase())) {
+            const sel = activeElem.value.slice(activeElem.selectionStart, activeElem.selectionEnd);
+            typeToSelection = {
+                'text/plain': sel,
+                'text/html': sel
+            };
+        } else {
+            const sel = window.getSelection();
+            const container = document.createElement('div');
+            for (let i = 0; i < sel.rangeCount; i++) {
+                container.append(sel.getRangeAt(i).cloneContents());
+            }
+            typeToSelection = {
+                'text/plain': sel.toString(),
+                'text/html': container.innerHTML
+            };
         }
-        typeToSelection = {
-            'text/plain': sel.toString(),
-            'text/html': container.innerHTML
-        };
     }
 
     const currentClipboard = await readFromClipboard(Object.keys(typesToSeparators));
@@ -159,13 +174,13 @@ async function append (typesToSeparators) {
 // Get around eslint-config-standard limitation on "exported" directive
 //   by exporting as follows:
 //   https://github.com/standard/standard/issues/614
-window.appendToClipboard = async function appendToClipboard (menuItemId) {
+window.appendToClipboard = async function appendToClipboard (menuItemId, linkText, linkUrl) {
     switch (menuItemId) {
     case 'clearClipboard':
         return writeToClipboard(clipboardMethodMap.noSeparator);
     }
     try {
-        await append(clipboardMethodMap[menuItemId]);
+        await append(clipboardMethodMap[menuItemId], linkText, linkUrl, menuItemId);
     } catch (err) {
         // Timed out
         console.log(`append erred: ${err}`);

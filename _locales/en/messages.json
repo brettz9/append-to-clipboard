@@ -18,6 +18,15 @@
     "append_double_line_break": {
         "message": "Append to Clipboard (Double line break separator)"
     },
+    "append_no_separator_linktext": {
+        "message": "Append to Clipboard - Link Text (no separator)"
+    },
+    "append_line_break_linktext": {
+        "message": "Append to Clipboard - Link Text (Line break separator)"
+    },
+    "append_double_line_break_linktext": {
+        "message": "Append to Clipboard - Link Text (Double line break separator)"
+    },
     "clear_clipboard": {
         "message": "Clear Clipboard",
         "description": "Message to clear clipboard in context menu"
@@ -40,6 +49,24 @@
     },
     "doubleLineBreakSeparator_description": {
         "message": "Enable context menu for appending to clipboard with a double line break separator between pasted items (\"\\n\\n\" for text and \"<br /><br />\\n\\n\" for HTML)?"
+    },
+    "noSeparatorLinkText_title": {
+        "message": "No separator (link text)"
+    },
+    "noSeparatorLinkText_description": {
+        "message": "Enable context menu for appending link text to clipboard without a separator between pasted items?"
+    },
+    "lineBreakSeparatorLinkText_title": {
+        "message": "Line break separator (link text)"
+    },
+    "lineBreakSeparatorLinkText_description": {
+        "message": "Enable context menu for appending link text to clipboard with a line break separator between pasted items (\"\\n\" for text and \"<br />\\n\" for HTML)?"
+    },
+    "doubleLineBreakSeparatorLinkText_title": {
+        "message": "Double line break separator (link text)"
+    },
+    "doubleLineBreakSeparatorLinkText_description": {
+        "message": "Enable context menu for appending link text to clipboard with a double line break separator between pasted items (\"\\n\\n\" for text and \"<br /><br />\\n\\n\" for HTML)?"
     },
     "clearClipboard_title": {
         "message": "Clear Clipboard",

@@ -1,3 +1,8 @@
+# 2.2.0
+
+- Enhancement: Support appending link text or location (or
+    both for `text/html` format)
+
 # 2.1.0
 
 - Enhancement: Support appending from textareas/input

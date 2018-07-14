@@ -1,6 +1,5 @@
 /* eslint-env browser, webextensions */
-/* globals jml */
-'use strict';
+import jml from './jml.js';
 
 function _ (...args) {
     return browser.i18n.getMessage(...args);
@@ -12,6 +11,9 @@ jml('section', await Promise.all([
     ['noSeparator'],
     ['lineBreakSeparator'],
     ['doubleLineBreakSeparator'],
+    ['noSeparatorLinkText'],
+    ['lineBreakSeparatorLinkText'],
+    ['doubleLineBreakSeparatorLinkText'],
     ['clearClipboard']
 ].map(async ([preferenceKey]) => {
     let enabled = true;
