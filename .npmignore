@@ -1,0 +1,11 @@
+test.html
+
+.eslintignore
+.eslintrc
+.remarkrc
+
+web-ext-config.js
+web-ext-artifacts
+
+yarn.lock
+screenshots

@@ -126,15 +126,28 @@ function readFromClipboard (types, timeout) {
 }
 
 async function append (typesToSeparators) {
-    const container = document.createElement('div');
-    const sel = window.getSelection();
-    for (let i = 0; i < sel.rangeCount; i++) {
-        container.append(sel.getRangeAt(i).cloneContents());
+    // Due to https://bugzilla.mozilla.org/show_bug.cgi?id=85686 , we cannot
+    //  use `getSelection` alone
+    let typeToSelection;
+    const activeElem = document.activeElement;
+    if (['textarea', 'input'].includes(activeElem.nodeName.toLowerCase())) {
+        const sel = activeElem.value.slice(activeElem.selectionStart, activeElem.selectionEnd);
+        typeToSelection = {
+            'text/plain': sel,
+            'text/html': sel
+        };
+    } else {
+        const sel = window.getSelection();
+        const container = document.createElement('div');
+        for (let i = 0; i < sel.rangeCount; i++) {
+            container.append(sel.getRangeAt(i).cloneContents());
+        }
+        typeToSelection = {
+            'text/plain': sel.toString(),
+            'text/html': container.innerHTML
+        };
     }
-    const typeToSelection = {
-        'text/plain': sel.toString(),
-        'text/html': container.innerHTML
-    };
+
     const currentClipboard = await readFromClipboard(Object.keys(typesToSeparators));
     Object.entries(typesToSeparators).forEach(([type, separator]) => {
         // console.log('currentClipboard', type, separator, '::', currentClipboard[type], '::', typeToSelection[type]);

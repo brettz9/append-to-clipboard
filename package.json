@@ -4,7 +4,7 @@
     "author": "Brett Zamir",
     "contributors": [],
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "keywords": [
         "webextension",
         "clipboard"
@@ -18,13 +18,13 @@
     "engines": {},
     "dependencies": {},
     "devDependencies": {
-        "eslint": "4.19.1",
+        "eslint": "5.1.0",
         "eslint-config-standard": "11.0.0",
-        "eslint-plugin-import": "2.9.0",
+        "eslint-plugin-import": "2.13.0",
         "eslint-plugin-node": "6.0.1",
-        "eslint-plugin-promise": "3.7.0",
-        "eslint-plugin-standard": "3.0.1",
-        "jamilih": "0.32.0",
+        "eslint-plugin-promise": "3.8.0",
+        "eslint-plugin-standard": "3.1.0",
+        "jamilih": "0.34.0",
         "webextension-polyfill": "^0.2.1"
     },
     "scripts": {

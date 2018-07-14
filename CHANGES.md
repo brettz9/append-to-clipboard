@@ -1,5 +1,10 @@
-# ?
+# 2.1.0
 
+- Enhancement: Support appending from textareas/input
+- Enhancement: Add disabling code for any users disabling add-on
+- npm: Update devDeps
+- npm: Add ignore file to minimize npm package size
+- npm: Bump to 2.1.0
 - Yarn: Add `yarn.lock`
 
 # 2.0.0
