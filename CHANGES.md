@@ -1,3 +1,7 @@
+# 2.2.1
+
+- Fix: Include `manifest.json` version update
+
 # 2.2.0
 
 - Enhancement: Support appending link text or location (or

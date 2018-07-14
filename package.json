@@ -4,7 +4,7 @@
     "author": "Brett Zamir",
     "contributors": [],
     "license": "MIT",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "keywords": [
         "webextension",
         "clipboard"
