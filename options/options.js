@@ -1,6 +1,5 @@
 /* eslint-env browser, webextensions */
-/* globals jml */
-// import jml from './jml.js';
+import jml from './jml.js';
 
 function _ (...args) {
     return browser.i18n.getMessage(...args);
