@@ -1,3 +1,14 @@
+# 2.2.3
+
+- Security fix: Escape backslashes (courtesy @lgtmco)
+- Refactoring: Use new Jamilih API, object shorthand
+- Refactoring: Resume using ES6 module import
+- Linting (ESLint): Override "standard"'s new object-curly-spacing rule
+- Linting (LGTM): Avoid error for "useless expression" (`executeScript`
+    actually gets the return value, so it is useful in our situation)
+- npm: Add `copy` script
+- npm: Update devDeps and copied files
+
 # 2.2.2
 
 - Revert to non-ES6 module import due to
@@ -16,9 +27,8 @@
 
 - Enhancement: Support appending from textareas/input
 - Enhancement: Add disabling code for any users disabling add-on
-- npm: Update devDeps
 - npm: Add ignore file to minimize npm package size
-- npm: Bump to 2.1.0
+- npm: Update devDeps
 - Yarn: Add `yarn.lock`
 
 # 2.0.0

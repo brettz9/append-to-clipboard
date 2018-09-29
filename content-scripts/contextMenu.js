@@ -188,4 +188,5 @@ window.appendToClipboard = async function appendToClipboard (menuItemId, linkTex
 };
 
 // Can't clone above export
-'end on a note which Firefox approves'; // eslint-disable-line no-unused-expressions
+/* eslint-disable no-unused-expressions */
+'end on a note which Firefox approves'; // lgtm [js/useless-expression]
