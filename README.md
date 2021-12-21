@@ -1,7 +1,8 @@
 # append-to-clipboard
 
 A webextensions
-([Firefox](https://addons.mozilla.org/en-US/firefox/addon/append-to-clipboard/))
+([Firefox](https://addons.mozilla.org/en-US/firefox/addon/append-to-clipboard/)
+or [Chrome](https://chrome.google.com/webstore/detail/append-to-clipboard/dbpammihbikenddkkiggbdnakdoldobo/related?hl=en&authuser=0))
 add-on to allow appending to the clipboard, optionally with a single or double
 line break in between as well as a "clear clipboard" option.
 
@@ -29,7 +30,7 @@ helpful if you wish to ensure your first copy is as plain text.
     submenu) (as per issue #1)
 1. Allow for appending into (and pasting from) **numbered buffers**
 1. **[Key commands](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/commands)**
-    for each command slot as in:    
+    for each command slot as in:
     <https://addons.mozilla.org/en-US/firefox/addon/addmoretexttoclipboard/>;
     allow each to be customizable using <https://github.com/brettz9/key-selector>?
 1. Find way for "Clear clipboard" to work, or at least not show up, on
