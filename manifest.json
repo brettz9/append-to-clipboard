@@ -1,32 +1,32 @@
 {
   "manifest_version": 3,
-
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
   "author": "Brett Zamir",
   "version": "2.3.0",
   "homepage_url": "https://github.com/brettz9/append-to-clipboard/",
-
-  "permissions": ["contextMenus", "storage", "clipboardWrite", "clipboardRead", "activeTab", "scripting"],
-
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "clipboardWrite",
+    "clipboardRead",
+    "activeTab",
+    "scripting"
+  ],
   "background": {
     "type": "module",
-    "scripts": ["polyfills/browser-polyfill.min.js", "lib/background.js"]
+    "service_worker": "lib/background.js"
   },
-
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true,
     "open_in_tab": false
   },
-
   "icons": {
     "128": "icon.png"
   },
-
   "default_locale": "en",
-
   "browser_specific_settings": {
     "gecko": {
       "id": "jid0-o20OcJEteABtgjFUKPfXyQhRIQg@jetpack"

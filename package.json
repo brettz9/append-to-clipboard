@@ -9,6 +9,7 @@
     "webextension",
     "clipboard"
   ],
+  "type": "module",
   "bugs": "https://github.com/brettz9/append-to-clipboard/issues",
   "homepage": "https://github.com/brettz9/append-to-clipboard",
   "repository": {
@@ -28,13 +29,15 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
+    "chrome": "node tools/chrome.js && npm run webext-build",
+    "firefox": "node tools/firefox.js && npm run webext-build",
     "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
     "webext": "npm run eslint && web-ext run --browser-console -f firefox",
     "webext-default": "npm run eslint && web-ext run --browser-console",
     "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
     "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
-    "webext-build": "npm run eslint && web-ext build",
+    "webext-build": "npm run eslint && web-ext build --overwrite-dest",
     "eslint": "eslint .",
     "lint": "npm run eslint",
     "copy-jamilih": "cp node_modules/jamilih/dist/jml-es-noinnerh.js options/jml.js",
