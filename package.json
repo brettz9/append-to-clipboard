@@ -19,6 +19,7 @@
   "engines": {},
   "dependencies": {},
   "devDependencies": {
+    "convert-manifest-format": "^0.2.3",
     "eslint": "8.37.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.27.5",
@@ -29,8 +30,8 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
-    "chrome": "node tools/chrome.js && npm run webext-build",
-    "firefox": "node tools/firefox.js && npm run webext-build",
+    "chrome": "convert-manifest-format --chrome && npm run webext-build",
+    "firefox": "convert-manifest-format --firefox && npm run webext-build",
     "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
     "webext": "npm run eslint && web-ext run --browser-console -f firefox",
     "webext-default": "npm run eslint && web-ext run --browser-console",

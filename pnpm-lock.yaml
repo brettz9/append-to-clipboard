@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  convert-manifest-format:
+    specifier: ^0.2.3
+    version: 0.2.3
   eslint:
     specifier: 8.37.0
     version: 8.37.0
@@ -242,6 +245,12 @@ packages:
 
   /concat-map@0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    dev: true
+
+  /convert-manifest-format@0.2.3:
+    resolution: {integrity: sha512-W+D7FFgP6DYCi1CfLKsjBrhNZDVhEd5Ri7SodnBBghTPQfXVUq+6WNkB/As+FG1uCb9MW1asdH+ByuJOYb6DSA==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
     dev: true
 
   /cross-spawn@7.0.3:
