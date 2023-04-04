@@ -19,7 +19,7 @@
   "engines": {},
   "dependencies": {},
   "devDependencies": {
-    "convert-manifest-format": "^0.2.3",
+    "convert-manifest-format": "^0.3.1",
     "eslint": "8.37.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.27.5",
