@@ -18,14 +18,15 @@
   "engines": {},
   "dependencies": {},
   "devDependencies": {
-    "eslint": "8.5.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-plugin-import": "2.25.3",
+    "convert-manifest-format": "^0.3.1",
+    "eslint": "8.37.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.27.5",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-standard": "4.1.0",
     "jamilih": "0.54.0",
-    "webextension-polyfill": "^0.8.0"
+    "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
     "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
@@ -34,7 +35,7 @@
     "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
     "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
-    "webext-build": "npm run eslint && web-ext build",
+    "webext-build": "npm run eslint && web-ext build --overwrite-dest",
     "eslint": "eslint .",
     "lint": "npm run eslint",
     "copy-jamilih": "cp node_modules/jamilih/dist/jml-es-noinnerh.js options/jml.js",
