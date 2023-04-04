@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 2.3.3
+
+- fix: seek to ensure menus consistently display on startup
+
 ## 2.3.2
 
 - fix: issue with build
