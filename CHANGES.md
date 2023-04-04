@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 2.3.2
+
+- fix: issue with build
+
 ## 2.3.1
 
 - fix: issue with build
