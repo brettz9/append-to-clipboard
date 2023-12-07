@@ -19,14 +19,14 @@
   "engines": {},
   "dependencies": {},
   "devDependencies": {
-    "convert-manifest-format": "^0.3.1",
-    "eslint": "8.37.0",
-    "eslint-config-standard": "17.0.0",
-    "eslint-plugin-import": "2.27.5",
+    "convert-manifest-format": "^0.4.1",
+    "eslint": "8.55.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.29.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-standard": "4.1.0",
-    "jamilih": "0.54.0",
+    "jamilih": "0.58.2",
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
