@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 3.0.0
+
+- feat: Manifest 3
+
 ## 2.3.3
 
 - fix: seek to ensure menus consistently display on startup
