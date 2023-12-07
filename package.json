@@ -39,6 +39,7 @@
     "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
     "webext-build": "npm run eslint && web-ext build --overwrite-dest",
+    "webext-lint": "npm run eslint && web-ext lint",
     "eslint": "eslint .",
     "lint": "npm run eslint",
     "copy-jamilih": "cp node_modules/jamilih/dist/jml-es-noinnerh.js options/jml.js",

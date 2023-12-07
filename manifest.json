@@ -20,7 +20,6 @@
   },
   "options_ui": {
     "page": "options/options.html",
-    "browser_style": true,
     "open_in_tab": false
   },
   "icons": {
