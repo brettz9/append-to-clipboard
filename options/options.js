@@ -1,12 +1,15 @@
-/* eslint-env browser, webextensions */
-import {jml} from './jml.js';
+import {jml, body} from './jml.js';
 
+/**
+ * @param {...any} args
+ * @returns {string}
+ */
 function _ (...args) {
   return browser.i18n.getMessage(...args);
 }
 
 document.title = _('extensionName'); // If switch to tabs
-(async () => {
+
 jml('section', await Promise.all([
   ['noSeparator'],
   ['lineBreakSeparator'],
@@ -18,7 +21,8 @@ jml('section', await Promise.all([
 ].map(async ([preferenceKey]) => {
   let enabled = true;
   try {
-    ({[preferenceKey]: enabled = true} = await browser.storage.local.get(preferenceKey));
+    ({[preferenceKey]: enabled = true} =
+      await browser.storage.local.get(preferenceKey));
   } catch (err) {}
   return ['label', [
     ['input', {
@@ -41,5 +45,4 @@ jml('section', await Promise.all([
     ]],
     ['br']
   ]];
-})), document.body);
-})();
+})), body);
