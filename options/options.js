@@ -1,7 +1,7 @@
 import {jml, body} from './jml.js';
 
 /**
- * @param {...any} args
+ * @param {...string} args
  * @returns {string}
  */
 function _ (...args) {
