@@ -9,8 +9,8 @@ function $ (sel) {
 }
 
 const contentHolderID = 'append-to-clipboard-content-holder';
-if ($(contentHolderID)) {
-  $(contentHolderID).remove();
+if ($('#' + contentHolderID)) {
+  $('#' + contentHolderID).remove();
 }
 document.body.append(
   (() => {
