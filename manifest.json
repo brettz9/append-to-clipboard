@@ -4,7 +4,7 @@
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
   "author": "Brett Zamir",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "homepage_url": "https://github.com/brettz9/append-to-clipboard/",
   "permissions": [
     "contextMenus",
@@ -28,6 +28,11 @@
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      },
       "id": "jid0-o20OcJEteABtgjFUKPfXyQhRIQg@jetpack"
     }
   }

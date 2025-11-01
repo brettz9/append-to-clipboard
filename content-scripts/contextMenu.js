@@ -42,6 +42,12 @@ clipboardMethodMap.lineBreakSeparatorLinkText =
 clipboardMethodMap.doubleLineBreakSeparatorLinkText =
   clipboardMethodMap.doubleLineBreakSeparator;
 
+clipboardMethodMap.noSeparatorSrc = clipboardMethodMap.noSeparator;
+clipboardMethodMap.lineBreakSeparatorSrc =
+  clipboardMethodMap.lineBreakSeparator;
+clipboardMethodMap.doubleLineBreakSeparatorSrc =
+  clipboardMethodMap.doubleLineBreakSeparator;
+
 /**
  * Adapted from MIT-licensed:
  *   https://github.com/NiklasGollenstede/es6lib/blob/master/dom.js#L162
@@ -166,10 +172,13 @@ function readFromClipboard (types, timeout) {
  * @param {{[key: string]: string}} typesToSeparators
  * @param {string} linkText
  * @param {string} linkUrl
+ * @param {string} srcUrl
  * @param {string} menuItemId
  * @returns {Promise<void>}
  */
-async function append (typesToSeparators, linkText, linkUrl, menuItemId) {
+async function append (
+  typesToSeparators, linkText, linkUrl, srcUrl, menuItemId
+) {
   // Due to https://bugzilla.mozilla.org/show_bug.cgi?id=85686 , we cannot
   //  use `getSelection` alone
   let typeToSelection;
@@ -177,6 +186,11 @@ async function append (typesToSeparators, linkText, linkUrl, menuItemId) {
     typeToSelection = {
       'text/plain': linkText,
       'text/html': linkText
+    };
+  } else if (srcUrl && menuItemId.endsWith('Src')) {
+    typeToSelection = {
+      'text/plain': srcUrl,
+      'text/html': `<a href="${srcUrl}">${linkText || srcUrl}</a>`
     };
   } else if (linkUrl) {
     typeToSelection = {
@@ -221,7 +235,7 @@ async function append (typesToSeparators, linkText, linkUrl, menuItemId) {
 //   by exporting as follows:
 //   https://github.com/standard/standard/issues/614
 globalThis.appendToClipboard = async function appendToClipboard (
-  menuItemId, linkText, linkUrl
+  menuItemId, linkText, linkUrl, srcUrl
 ) {
   switch (menuItemId) {
   case 'clearClipboard':
@@ -230,7 +244,9 @@ globalThis.appendToClipboard = async function appendToClipboard (
     break;
   }
   try {
-    await append(clipboardMethodMap[menuItemId], linkText, linkUrl, menuItemId);
+    await append(
+      clipboardMethodMap[menuItemId], linkText, linkUrl, srcUrl, menuItemId
+    );
   } catch (err) {
     // Timed out
     // eslint-disable-next-line no-console -- Debugging

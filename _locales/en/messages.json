@@ -18,6 +18,17 @@
     "append_double_line_break": {
         "message": "Append to Clipboard (Double line break separator)"
     },
+
+    "append_no_separator_src": {
+        "message": "Append to Clipboard - src URL (no separator)"
+    },
+    "append_line_break_src": {
+        "message": "Append to Clipboard - src URL (Line break separator)"
+    },
+    "append_double_line_break_src": {
+        "message": "Append to Clipboard - src URL (Double line break separator)"
+    },
+
     "append_no_separator_linktext": {
         "message": "Append to Clipboard - Link Text (no separator)"
     },
@@ -50,6 +61,26 @@
     "doubleLineBreakSeparator_description": {
         "message": "Enable context menu for appending to clipboard with a double line break separator between pasted items (\"\\n\\n\" for text and \"<br /><br />\\n\\n\" for HTML)?"
     },
+
+    "noSeparatorSrc_title": {
+        "message": "No separator (src URL)"
+    },
+    "noSeparatorSrc_description": {
+        "message": "Enable context menu for appending src URL to clipboard without a separator between pasted items?"
+    },
+    "lineBreakSeparatorSrc_title": {
+        "message": "Line break separator (src URL)"
+    },
+    "lineBreakSeparatorSrc_description": {
+        "message": "Enable context menu for appending src URL to clipboard with a line break separator between pasted items (\"\\n\" for text and \"<br />\\n\" for HTML)?"
+    },
+    "doubleLineBreakSeparatorSrc_title": {
+        "message": "Double line break separator (src URL)"
+    },
+    "doubleLineBreakSeparatorSrc_description": {
+        "message": "Enable context menu for appending src URL to clipboard with a double line break separator between pasted items (\"\\n\\n\" for text and \"<br /><br />\\n\\n\" for HTML)?"
+    },
+
     "noSeparatorLinkText_title": {
         "message": "No separator (link text)"
     },

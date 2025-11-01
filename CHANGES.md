@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 3.1.0
+
+- feat: src URL copying (images, videos, and audio)
+
 ## 3.0.0
 
 - feat: Manifest 3
