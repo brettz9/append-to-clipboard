@@ -2,10 +2,10 @@
 
 /**
  * @param {string} sel
- * @returns {Node}
+ * @returns {Element}
  */
 function $ (sel) {
-  return document.querySelector(sel);
+  return /** @type {Element} */ (document.querySelector(sel));
 }
 
 const contentHolderID = 'append-to-clipboard-content-holder';
@@ -22,6 +22,29 @@ document.body.append(
     return ta;
   })()
 );
+
+/**
+ * @typedef {{
+ *   'text/plain': string,
+ *   'text/html': string
+ * }} FormatTypes
+ */
+
+/**
+ * @typedef {{
+ *   noSeparator: FormatTypes,
+ *   lineBreakSeparator: FormatTypes,
+ *   doubleLineBreakSeparator: FormatTypes,
+ *   noSeparatorLinkText?: FormatTypes,
+ *   lineBreakSeparatorLinkText?: FormatTypes,
+ *   doubleLineBreakSeparatorLinkText?: FormatTypes,
+ *   noSeparatorSrc?: FormatTypes,
+ *   lineBreakSeparatorSrc?: FormatTypes,
+ *   doubleLineBreakSeparatorSrc?: FormatTypes
+ * }} ClipboardMethodMap
+ */
+
+/** @type {ClipboardMethodMap} */
 const clipboardMethodMap = {
   noSeparator: {
     'text/plain': '',
@@ -52,20 +75,20 @@ clipboardMethodMap.doubleLineBreakSeparatorSrc =
  * Adapted from MIT-licensed:
  *   https://github.com/NiklasGollenstede/es6lib/blob/master/dom.js#L162
  * .
- * @param {string|{[key: string]: string}} data
- * @param {number} timeout
+ * @param {{[key: string]: string}} data
+ * @param {number} [timeout]
  * @returns {Promise<void>}
  */
 function writeToClipboard (data, timeout) {
   // eslint-disable-next-line promise/avoid-new -- Need to convert
   return new Promise(function (resolve, reject) {
-    const copyText = $('#' + contentHolderID);
+    const copyText = /** @type {HTMLInputElement} */ ($('#' + contentHolderID));
     copyText.focus();
 
     let done = false;
 
     /**
-     * @param {Event} ev
+     * @param {ClipboardEvent} ev
      * @returns {void}
      */
     function onCopy (ev) {
@@ -76,14 +99,10 @@ function writeToClipboard (data, timeout) {
         done = true;
         document.removeEventListener('copy', onCopy);
         const transfer = ev.clipboardData;
-        transfer.clearData();
-        if (typeof data === 'string') {
-          transfer.setData('text/plain', data);
-        } else {
-          Object.entries(data).forEach(([mimeType, mimeData]) => {
-            transfer.setData(mimeType, mimeData);
-          });
-        }
+        transfer?.clearData();
+        Object.entries(data).forEach(([mimeType, mimeData]) => {
+          transfer?.setData(mimeType, mimeData);
+        });
         ev.preventDefault(); // Disallow auto-copying
         resolve();
       } catch (error) {
@@ -100,7 +119,7 @@ function writeToClipboard (data, timeout) {
       reject(new Error('Timeout after ' + delay + 'ms'));
     }, delay);
     document.addEventListener('copy', onCopy);
-    document.execCommand('copy', false, null);
+    document.execCommand('copy', false, undefined);
   });
 }
 
@@ -108,18 +127,20 @@ function writeToClipboard (data, timeout) {
  * Adapted from MIT-licensed: https://github.com/NiklasGollenstede/es6lib/blob/master/dom.js#L192
  * .
  * @param {string|string[]} types
- * @param {number} timeout
- * @returns {Promise<void>}
+ * @param {number} [timeout] Defaults to `5000`.
+ * @returns {Promise<Record<string, string>>}
  */
 function readFromClipboard (types, timeout) {
   // eslint-disable-next-line promise/avoid-new -- Need to convert
   return new Promise(function (resolve, reject) {
-    const pasteText = $('#' + contentHolderID);
+    const pasteText = /** @type {HTMLInputElement} */ (
+      $('#' + contentHolderID)
+    );
     pasteText.focus();
     let done = false;
 
     /**
-     * @param {Event} ev
+     * @param {ClipboardEvent} ev
      * @returns {void}
      */
     function onPaste (ev) {
@@ -136,13 +157,15 @@ function readFromClipboard (types, timeout) {
         // Says no modification allowed; bug in original script?
         // transfer.clearData();
         if (typeof types === 'string' || !types) {
-          resolve(transfer.getData(types || 'text/plain'));
+          resolve({
+            'text/plain': transfer?.getData(types || 'text/plain') ?? ''
+          });
         } else {
           resolve(
             types.reduce((data, mimeType) => {
-              data[mimeType] = transfer.getData(mimeType);
+              data[mimeType] = transfer?.getData(mimeType) ?? '';
               return data;
-            }, {})
+            }, /** @type {Record<string, string>} */ ({}))
           );
         }
       } catch (error) {
@@ -159,7 +182,7 @@ function readFromClipboard (types, timeout) {
       reject(new Error('Timeout after ' + delay + 'ms'));
     }, delay);
     document.addEventListener('paste', onPaste);
-    document.execCommand('paste', false, null);
+    document.execCommand('paste', false, undefined);
     pasteText.dispatchEvent(new Event('paste', {
       bubbles: true,
       cancelable: true,
@@ -169,7 +192,7 @@ function readFromClipboard (types, timeout) {
 }
 
 /**
- * @param {{[key: string]: string}} typesToSeparators
+ * @param {FormatTypes} typesToSeparators
  * @param {string} linkText
  * @param {string} linkUrl
  * @param {string} srcUrl
@@ -198,17 +221,21 @@ async function append (
       'text/html': `<a href="${linkUrl}">${linkText || linkUrl}</a>`
     };
   } else {
-    const activeElem = document.activeElement;
+    const activeElem = /** @type {Element} */ (document.activeElement);
     if (['textarea', 'input'].includes(activeElem.nodeName.toLowerCase())) {
-      const sel = activeElem.value.slice(
-        activeElem.selectionStart, activeElem.selectionEnd
+      const inputElem = /** @type {HTMLInputElement|HTMLTextAreaElement} */ (
+        activeElem
+      );
+      const sel = inputElem.value.slice(
+        inputElem.selectionStart ?? undefined,
+        inputElem.selectionEnd ?? undefined
       );
       typeToSelection = {
         'text/plain': sel,
         'text/html': sel
       };
     } else {
-      const sel = globalThis.getSelection();
+      const sel = /** @type {Selection} */ (globalThis.getSelection());
       const container = document.createElement('div');
       for (let i = 0; i < sel.rangeCount; i++) {
         container.append(sel.getRangeAt(i).cloneContents());
@@ -234,6 +261,12 @@ async function append (
 // Get around eslint-config-standard limitation on "exported" directive
 //   by exporting as follows:
 //   https://github.com/standard/standard/issues/614
+/**
+ * @param {keyof clipboardMethodMap|"clearClipboard"} menuItemId
+ * @param {string} linkText
+ * @param {string} linkUrl
+ * @param {string} srcUrl
+ */
 globalThis.appendToClipboard = async function appendToClipboard (
   menuItemId, linkText, linkUrl, srcUrl
 ) {
@@ -245,7 +278,8 @@ globalThis.appendToClipboard = async function appendToClipboard (
   }
   try {
     await append(
-      clipboardMethodMap[menuItemId], linkText, linkUrl, srcUrl, menuItemId
+      /** @type {FormatTypes} */ (clipboardMethodMap[menuItemId]),
+      linkText, linkUrl, srcUrl, menuItemId
     );
   } catch (err) {
     // Timed out

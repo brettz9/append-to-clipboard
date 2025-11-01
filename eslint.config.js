@@ -14,7 +14,9 @@ export default [
       languageOptions: {
         ...cfg.languageOptions,
         globals: {
-          ...cfg.languageOptions?.globals,
+          // eslint-disable-next-line @stylistic/max-len -- Long
+          // eslint-disable-next-line unicorn/no-useless-fallback-in-spread -- TS
+          ...(cfg.languageOptions?.globals ?? {}),
           ...globals.webextensions
         }
       }

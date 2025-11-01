@@ -1,11 +1,11 @@
 import {jml, body} from './jml.js';
 
 /**
- * @param {...string} args
+ * @param {string} arg
  * @returns {string}
  */
-function _ (...args) {
-  return browser.i18n.getMessage(...args);
+function _ (arg) {
+  return browser.i18n.getMessage(arg);
 }
 
 document.title = _('extensionName'); // If switch to tabs
@@ -24,19 +24,29 @@ jml('section', await Promise.all([
 ].map(async ([preferenceKey]) => {
   let enabled = true;
   try {
-    ({[preferenceKey]: enabled = true} =
-      await browser.storage.local.get(preferenceKey));
+    enabled = /** @type {{enabled: boolean}} */ (
+      (await browser.storage.local.get(preferenceKey))[
+        preferenceKey
+      ]
+    ).enabled ?? true;
   } catch (err) {}
-  return ['label', [
+  return /** @type {import('jamilih').JamilihArray} */ (['label', [
     ['input', {
       type: 'checkbox',
       checked: enabled,
       $on: {
         async change ({target}) {
           await browser.storage.local.set({
-            [preferenceKey]: target.checked
+            [preferenceKey]: /** @type {HTMLInputElement} */ (target).checked
           });
-          const backgroundPage = browser.extension.getBackgroundPage();
+          const backgroundPage =
+            /**
+             * @type {Window & {
+             *   updateContextMenus: () => void
+             * }}
+             */ (
+              browser.extension.getBackgroundPage()
+            );
           backgroundPage.updateContextMenus();
         }
       }
@@ -47,5 +57,5 @@ jml('section', await Promise.all([
       _(preferenceKey + '_description')
     ]],
     ['br']
-  ]];
+  ]]);
 })), body);
