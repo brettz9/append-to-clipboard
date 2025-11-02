@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 3.1.1
+
+- fix: avoid unloading add-on under certain conditions
+
 ## 3.1.0
 
 - feat: src URL copying (images, videos, and audio)
