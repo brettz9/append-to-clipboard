@@ -24,12 +24,13 @@ jml('section', await Promise.all([
 ].map(async ([preferenceKey]) => {
   let enabled = true;
   try {
-    enabled = /** @type {{enabled: boolean}} */ (
+    enabled = /** @type {boolean} */ (
       (await browser.storage.local.get(preferenceKey))[
         preferenceKey
       ]
-    ).enabled ?? true;
+    ) ?? true;
   } catch (err) {}
+
   return /** @type {import('jamilih').JamilihArray} */ (['label', [
     ['input', {
       type: 'checkbox',
@@ -39,15 +40,10 @@ jml('section', await Promise.all([
           await browser.storage.local.set({
             [preferenceKey]: /** @type {HTMLInputElement} */ (target).checked
           });
-          const backgroundPage =
-            /**
-             * @type {Window & {
-             *   updateContextMenus: () => void
-             * }}
-             */ (
-              browser.extension.getBackgroundPage()
-            );
-          backgroundPage.updateContextMenus();
+
+          await browser.runtime.sendMessage(undefined, {
+            triggerUpdateContextMenus: true
+          });
         }
       }
     }],

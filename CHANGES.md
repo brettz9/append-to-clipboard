@@ -1,5 +1,9 @@
 # CHANGES for `append-to-clipboard`
 
+## 3.1.2
+
+- fix: options were not displaying or triggering action
+
 ## 3.1.1
 
 - fix: avoid unloading add-on under certain conditions
